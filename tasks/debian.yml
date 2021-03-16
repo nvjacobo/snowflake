@@ -1,0 +1,11 @@
+- name: Add backports repository
+  apt_repository:
+    repo: "deb http://deb.debian.org/debian buster-backports main"
+    state: present
+    update_cache: true
+
+- name: Install golang
+  package:
+    name: "{{ snowflake_packages_deb }}"
+    default_release: buster-backports
+    state: present

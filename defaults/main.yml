@@ -1,0 +1,16 @@
+---
+# defaults file for snowflake
+
+# golang in debian 
+
+snowflake_packages_deb:
+- golang-src
+- golang-go
+
+snowflake_utils: 
+- git 
+- screen
+- runit
+- runit-systemd
+ 
+snowflake_user: snowflake

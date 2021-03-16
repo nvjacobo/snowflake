@@ -1,0 +1,4 @@
+#!/bin/sh -e
+exec 2>&1
+exec chpst -u {{ snowflake_user }} /home/{{ snowflake_user }}/repo/proxy/proxy
+
