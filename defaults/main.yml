@@ -12,5 +12,8 @@ snowflake_utils:
 - screen
 - runit
 - runit-systemd
- 
+
+snowflake_packages_deb_ubuntu:
+- golang
+
 snowflake_user: snowflake

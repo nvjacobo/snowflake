@@ -31,9 +31,9 @@ galaxy_info:
      versions:
      - buster
   #   - 25
-  # - name: SomePlatform
-  #   versions:
-  #   - all
+   - name: Ubuntu
+     versions:
+     - focal
   #   - 1.0
   #   - 7
   #   - 99.99

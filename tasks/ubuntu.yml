@@ -1,0 +1,4 @@
+- name: Install golang
+  package:
+    name: "{{ snowflake_packages_deb_ubuntu }}"
+    state: present

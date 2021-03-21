@@ -2,7 +2,10 @@
 # tasks file for snowflake
 
 - include_tasks: debian.yml
-  when: ansible_os_family == 'Debian'
+  when: ansible_distribution == 'Debian'
+
+- include_task: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
 
 - name: Install required software
   package:
