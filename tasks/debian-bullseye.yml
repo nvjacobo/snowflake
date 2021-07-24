@@ -1,0 +1,5 @@
+- name: Install golang
+  package:
+    name: "{{ snowflake_packages_deb }}"
+    default_release: bullseye
+    state: present

@@ -30,6 +30,7 @@ galaxy_info:
    - name: Debian
      versions:
      - buster
+     - bullseye  
   #   - 25
    - name: Ubuntu
      versions:

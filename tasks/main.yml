@@ -2,13 +2,18 @@
 # tasks file for snowflake
 
 - include_tasks: debian.yml
-  when: 
-   - ansible_distribution == 'Debian'  
+  when:
+   - ansible_distribution == 'Debian'
    - ansible_distribution_release == 'buster'
+
+- include_tasks: debian-bullseye.yml
+  when:
+    - ansible_distribution == 'Debian'
+    - ansible_distribution_release == 'bullseye'
 
 - include_tasks: ubuntu.yml
   when:
-   - ansible_distribution == 'Ubuntu' 
+   - ansible_distribution == 'Ubuntu'
    - ansible_distribution_release == 'focal'
 
 - name: Install required software
