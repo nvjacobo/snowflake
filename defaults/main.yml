@@ -9,7 +9,6 @@ snowflake_packages_deb:
 
 snowflake_utils: 
 - git 
-- screen
 - runit
 - runit-systemd
 
