@@ -23,5 +23,5 @@ Example Playbook
 ----------------
 
     - hosts: servers
-       roles:
+      roles:
           - nvjacobo.snowflake
