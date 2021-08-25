@@ -16,3 +16,6 @@ snowflake_packages_deb_ubuntu:
 - golang
 
 snowflake_user: snowflake
+
+# Update standalone version
+standalone_update: no 
