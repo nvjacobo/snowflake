@@ -32,6 +32,7 @@
     repo: 'https://git.torproject.org/pluggable-transports/snowflake.git'
     dest: /home/{{ snowflake_user }}/repo
     update: "{{ snowflake_update }}"
+  register: clone_git
 
 - name: go get
   command: go get
@@ -39,15 +40,15 @@
     warn: no
     chdir: /home/{{ snowflake_user }}/repo/proxy
   register: go_get
-  changed_when: false
+  when: clone_git is changed 
 
 - name: go build
   command: go build
   args:
     warn: no
     chdir: /home/{{ snowflake_user }}/repo/proxy
-  register: go_get
-  changed_when: false
+  register: go_build
+  when: clone_git is changed
 
 - name: Create a directory for runit
   ansible.builtin.file:
