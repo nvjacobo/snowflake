@@ -18,4 +18,4 @@ snowflake_packages_deb_ubuntu:
 snowflake_user: snowflake
 
 # Update standalone version
-standalone_update: no 
+snowflake_update: no 
