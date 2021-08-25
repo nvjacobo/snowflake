@@ -12,6 +12,7 @@ Role Variables
 --------------
 
    snowflake_user: snowflake
+   snowflake_update: yes
 
 
 Dependencies
