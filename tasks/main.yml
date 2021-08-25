@@ -31,7 +31,7 @@
   ansible.builtin.git:
     repo: 'https://git.torproject.org/pluggable-transports/snowflake.git'
     dest: /home/{{ snowflake_user }}/repo
-    update: [[ snowflake_update ]]
+    update: "{{ snowflake_update }}"
 
 - name: go get
   command: go get
