@@ -16,6 +16,12 @@
    - ansible_distribution == 'Ubuntu'
    - ansible_distribution_release == 'focal'
 
+- include_tasks: freebsd.yml
+  when:
+   - ansible_distribution == 'FreeBSD'
+   - ansible_distribution_release == '13.0-RELEASE'
+
+
 - name: Install required software
   package:
     name: "{{ snowflake_utils }}"
@@ -40,7 +46,7 @@
     warn: no
     chdir: /home/{{ snowflake_user }}/repo/proxy
   register: go_get
-  when: clone_git is changed 
+  when: clone_git is changed
 
 - name: go build
   command: go build

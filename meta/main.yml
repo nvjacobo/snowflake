@@ -30,12 +30,15 @@ galaxy_info:
    - name: Debian
      versions:
      - buster
-     - bullseye  
+     - bullseye
   #   - 25
    - name: Ubuntu
      versions:
      - focal
   #   - 1.0
+    - name: FreeBSD
+      versions:
+        - 13.0
   #   - 7
   #   - 99.99
 
