@@ -13,3 +13,9 @@
     name: snowflake-tor
     cached: yes
     state: present
+
+- name: Enable snowflake on boot
+  community.general.sysrc:
+    name: snowflake
+    state: present
+    value: "No"
