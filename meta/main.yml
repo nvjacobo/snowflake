@@ -34,10 +34,10 @@ galaxy_info:
    - name: Ubuntu
      versions:
      - focal
-    - name: FreeBSD
-      versions:
-        - 13.0
-        - 12.2
+   - name: FreeBSD
+     versions:
+     - 13.0
+     - 12.2
 
 
   galaxy_tags: []
