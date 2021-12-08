@@ -30,14 +30,15 @@ galaxy_info:
    - name: Debian
      versions:
      - buster
-     - bullseye  
-  #   - 25
+     - bullseye
    - name: Ubuntu
      versions:
      - focal
-  #   - 1.0
-  #   - 7
-  #   - 99.99
+    - name: FreeBSD
+      versions:
+        - 13.0
+        - 12.2
+
 
   galaxy_tags: []
     # List tags for your role here, one per line. A tag is a keyword that describes

@@ -3,3 +3,83 @@
     name: "{{ snowflake_packages_deb }}"
     default_release: bullseye
     state: present
+
+- name: Install required software
+  package:
+    name: "{{ snowflake_utils }}"
+    state: present
+
+- name: Add the user
+  ansible.builtin.user:
+    name: "{{ snowflake_user }}"
+    create_home: true
+    state: present
+
+- name: Clone snowflake repo
+  ansible.builtin.git:
+    repo: 'https://git.torproject.org/pluggable-transports/snowflake.git'
+    dest: /home/{{ snowflake_user }}/repo
+    update: "{{ snowflake_update }}"
+  register: clone_git
+
+- name: go get
+  command: go get
+  args:
+    warn: no
+    chdir: /home/{{ snowflake_user }}/repo/proxy
+  register: go_get
+  when: clone_git is changed
+
+- name: go build
+  command: go build
+  args:
+    warn: no
+    chdir: /home/{{ snowflake_user }}/repo/proxy
+  register: go_build
+  when: clone_git is changed
+
+- name: Create a directory for runit
+  ansible.builtin.file:
+    path: /etc/runit/snow-proxy/
+    state: directory
+    mode: '0644'
+
+- name: Create a directory for runit log
+  ansible.builtin.file:
+    path: /etc/runit/snow-proxy/log
+    state: directory
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Create a directory for logs
+  ansible.builtin.file:
+    path: /home/{{ snowflake_user }}/logs
+    state: directory
+    owner: "{{ snowflake_user }}"
+    group: "{{ snowflake_user }}"
+    mode: '0775'
+
+- name: Set up runit
+  template:
+        src: "templates/run.j2"
+        dest: "/etc/runit/snow-proxy/run"
+        owner: root
+        group: root
+        mode: a+x
+
+- name: Set up runit logs
+  template:
+        src: "templates/run-log.j2"
+        dest: "/etc/runit/snow-proxy/log/run"
+        owner: root
+        group: root
+        mode: a+x
+
+- name: Create a symbolic link
+  ansible.builtin.file:
+    src: /etc/runit/snow-proxy
+    dest: /etc/service/snow-proxy
+    owner: root
+    group: root
+    state: link

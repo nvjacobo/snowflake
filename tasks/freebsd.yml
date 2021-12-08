@@ -1,0 +1,21 @@
+# freebsd.yml
+
+- name: Config pkg repo
+  template:
+    src: "../templates/{{ item }}.j2"
+    dest: "/etc/pkg/{{ item }}"
+    mode: 0644
+  with_items:
+    - FreeBSD.conf
+
+- name: Install package snowflake-tor
+  community.general.pkgng:
+    name: snowflake-tor
+    cached: yes
+    state: present
+
+- name: Enable snowflake on boot
+  community.general.sysrc:
+    name: snowflake
+    state: present
+    value: "No"
