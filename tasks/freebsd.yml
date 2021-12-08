@@ -16,6 +16,11 @@
 
 - name: Enable snowflake on boot
   community.general.sysrc:
-    name: snowflake
+    name: snowflake_enable
     state: present
-    value: "No"
+    value: "YES"
+
+- name: Start service snowflake
+  ansible.builtin.service:
+    name: snowflake
+    state: started
