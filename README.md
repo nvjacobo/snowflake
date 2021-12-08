@@ -1,7 +1,7 @@
 Role Name
 =========
 
-An Ansible Role that Snowflake proxy on GNU/Linux.
+An Ansible Role that Snowflake proxy on GNU/Linux and FreeBSD
 
 Requirements
 ------------
