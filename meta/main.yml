@@ -31,16 +31,14 @@ galaxy_info:
      versions:
      - buster
      - bullseye
-  #   - 25
    - name: Ubuntu
      versions:
      - focal
-  #   - 1.0
     - name: FreeBSD
       versions:
         - 13.0
-  #   - 7
-  #   - 99.99
+        - 12.2
+
 
   galaxy_tags: []
     # List tags for your role here, one per line. A tag is a keyword that describes
