@@ -38,7 +38,9 @@ galaxy_info:
      versions:
      - 13.0
      - 12.2
-
+   - name: Arch 
+     versions: 
+     - latest
 
   galaxy_tags: []
     # List tags for your role here, one per line. A tag is a keyword that describes
