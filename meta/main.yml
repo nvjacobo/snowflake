@@ -40,7 +40,7 @@ galaxy_info:
      - 12.2
    - name: ArchLinux 
      versions: 
-     - any
+     - all
 
   galaxy_tags: []
     # List tags for your role here, one per line. A tag is a keyword that describes
