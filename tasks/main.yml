@@ -24,3 +24,6 @@
 - include_tasks: arch.yml
   when:
    - ansible_distribution == 'Archlinux'
+
+- include_tasks: fedora.yml
+  when: ansible_os_family == 'RedHat'
