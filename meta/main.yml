@@ -38,9 +38,12 @@ galaxy_info:
      versions:
      - 13.0
      - 12.2
-   - name: ArchLinux 
-     versions: 
+   - name: ArchLinux
+     versions:
      - all
+   - name: Fedora
+     versions:
+      - 35
 
   galaxy_tags: []
     # List tags for your role here, one per line. A tag is a keyword that describes
