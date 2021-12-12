@@ -20,3 +20,7 @@
   when:
    - ansible_distribution == 'FreeBSD'
    - ansible_distribution_release == '13.0-RELEASE'
+
+- include_tasks: arch.yml
+  when:
+   - ansible_distribution == 'Archlinux'
