@@ -38,6 +38,13 @@
   register: go_build
   when: clone_git is changed
 
+- name: Copy binary file to /usr/bin/
+  ansible.builtin.copy:
+    src: /home/{{ snowflake_user }}/repo/proxy/proxy
+    dest: /usr/bin/
+    mode: a+x
+    remote_src: yes
+
 - name: Add unit systemd
   template:
     src: "../templates/{{ item }}.j2"
