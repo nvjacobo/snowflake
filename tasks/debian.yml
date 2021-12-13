@@ -43,3 +43,28 @@
     chdir: /home/{{ snowflake_user }}/repo/proxy
   register: go_build
   when: clone_git is changed
+
+- name: Copy binary file to /usr/bin/
+  ansible.builtin.copy:
+    src: /home/{{ snowflake_user }}/repo/proxy/proxy
+    dest: /usr/bin/
+    mode: a+x
+    remote_src: yes
+
+- name: Add unit systemd
+  template:
+    src: "../templates/{{ item }}.j2"
+    dest: "/etc/systemd/system/{{ item }}"
+    mode: 0644
+  with_items:
+    - snowflake-proxy.service
+
+- name: Enable service snowflake-proxy
+  ansible.builtin.systemd:
+    name: snowflake-proxy
+    enabled: yes
+
+- name: Start service snowflake
+  ansible.builtin.service:
+    name: snowflake-proxy
+    state: started
