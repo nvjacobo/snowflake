@@ -9,8 +9,7 @@ snowflake_packages_deb:
 
 snowflake_utils:
 - git
-- runit
-- runit-systemd
+
 
 snowflake_utils_arch:
 - git
