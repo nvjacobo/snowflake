@@ -44,48 +44,27 @@
   register: go_build
   when: clone_git is changed
 
-- name: Create a directory for runit
-  ansible.builtin.file:
-    path: /etc/runit/snow-proxy/
-    state: directory
-    mode: '0644'
+- name: Copy binary file to /usr/bin/
+  ansible.builtin.copy:
+    src: /home/{{ snowflake_user }}/repo/proxy/proxy
+    dest: /usr/bin/
+    mode: a+x
+    remote_src: yes
 
-- name: Create a directory for runit log
-  ansible.builtin.file:
-    path: /etc/runit/snow-proxy/log
-    state: directory
-    owner: root
-    group: root
-    mode: '0644'
-
-- name: Create a directory for logs
-  ansible.builtin.file:
-    path: /home/{{ snowflake_user }}/logs
-    state: directory
-    owner: "{{ snowflake_user }}"
-    group: "{{ snowflake_user }}"
-    mode: '0775'
-
-- name: Set up runit
+- name: Add unit systemd
   template:
-        src: "templates/run.j2"
-        dest: "/etc/runit/snow-proxy/run"
-        owner: root
-        group: root
-        mode: a+x
+    src: "../templates/{{ item }}.j2"
+    dest: "/etc/systemd/system/{{ item }}"
+    mode: 0644
+  with_items:
+    - snowflake-proxy.service
 
-- name: Set up runit logs
-  template:
-        src: "templates/run-log.j2"
-        dest: "/etc/runit/snow-proxy/log/run"
-        owner: root
-        group: root
-        mode: a+x
+- name: Enable service snowflake-proxy
+  ansible.builtin.systemd:
+    name: snowflake-proxy
+    enabled: yes
 
-- name: Create a symbolic link
-  ansible.builtin.file:
-    src: /etc/runit/snow-proxy
-    dest: /etc/service/snow-proxy
-    owner: root
-    group: root
-    state: link
+- name: Start service snowflake
+  ansible.builtin.service:
+    name: snowflake-proxy
+    state: started
