@@ -9,11 +9,11 @@ Requirements
 None.
 
 Role Variables
---------------
+----------------
 
-   clients: 0
+    clients: 0
 
-Maximum concurrent clients by defuaults is 0 = non limit
+Maximum concurrent clients by default is 0 = non limit
 
 Dependencies
 ------------
