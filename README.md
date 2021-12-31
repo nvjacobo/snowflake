@@ -1,4 +1,4 @@
-Role Name
+Ansible Role: Snowflake proxy
 =========
 
 An Ansible Role that Snowflake proxy on GNU/Linux and FreeBSD
