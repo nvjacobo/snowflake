@@ -11,8 +11,9 @@ None.
 Role Variables
 --------------
 
-   snowflake_update: yes
+   clients: 0
 
+Maximum concurrent clients by defuaults is 0 = non limit
 
 Dependencies
 ------------
