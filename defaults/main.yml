@@ -24,3 +24,6 @@ snowflake_user: snowflake
 
 # Update standalone version
 snowflake_update: yes
+
+# Maximum concurrent clients
+clients: 0

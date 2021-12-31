@@ -6,7 +6,7 @@ After=network-online.target docker.socket firewalld.service
 Wants=network-online.target
 
 [Service]
-ExecStart=/usr/bin/proxy
+ExecStart=/usr/bin/proxy -capacity {{ clients }}
 
 [Install]
 WantedBy=multi-user.target
