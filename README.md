@@ -8,7 +8,7 @@ Requirements
 
 None.
 
-Role Variables
+Role Variables (not for FreeBSD)
 ----------------
 
     clients: 0
