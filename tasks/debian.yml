@@ -64,7 +64,12 @@
     name: snowflake-proxy
     enabled: yes
 
-- name: Start service snowflake
+- name: Just force systemd to reread configs
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: Start/restart service snowflake
   ansible.builtin.service:
     name: snowflake-proxy
-    state: started
+    state: restarted
+
