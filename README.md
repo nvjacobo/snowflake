@@ -6,7 +6,7 @@ An Ansible Role that Snowflake proxy on GNU/Linux and FreeBSD
 Requirements
 ------------
 
-None.
+You need root privileges or sudo user to run this role. 
 
 Role Variables (not for FreeBSD)
 ----------------
