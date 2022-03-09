@@ -35,3 +35,14 @@ Example Playbook
     - hosts: servers
       roles:
           - nvjacobo.snowflake
+
+Example Playbook with Variable clients
+----------------
+
+    - hosts: snowflake
+       vars:
+        clients: 300
+      roles:
+         - nvjacobo.snowflake
+
+The above playbook has a limit of 300 concurrent clients. 
