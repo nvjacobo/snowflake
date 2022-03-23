@@ -7,6 +7,25 @@ Wants=network-online.target
 
 [Service]
 ExecStart=/usr/bin/proxy -capacity {{ clients }}
+User={{ snowflake_user }}
+Group={{ snowflake_user }}
+# https://www.freedesktop.org/software/systemd/man/systemd.exec.html#Sandboxing
+ProtectSystem=strict
+ProtectHome=tmpfs
+PrivateTmp=true
+PrivateDevices=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+NoNewPrivileges=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6
+RestrictNamespaces=true
+RestrictSUIDSGID=true
+CapabilityBoundingSet=
+ProtectProc=invisible
+PrivateUsers=true
+ProtectHostname=true
 
 [Install]
 WantedBy=multi-user.target
