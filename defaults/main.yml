@@ -1,13 +1,21 @@
 ---
+# Username for the snowflake user
 snowflake_user: snowflake
 
+# Group for the snowflake user account
 snowflake_group: "{{ snowflake_user }}"
 
-# Update Git standalone version
+# Destination to clone the Git repository of snowflake
+snowflake_git_dest: "/home/{{ snowflake_user }}/repo"
+
+# Location from where Go binaries are built
+snowflake_go_dest: "{{ snowflake_git_dest }}/proxy"
+
+# Whether the Snowflake Git repository should be updated
 snowflake_git_update: true
 
-# Maximum concurrent clients
+# Maximum concurrent clients for Snowflake / set in Systemd unit
 snowflake_max_clients: 0
 
-# Force Snowflake to be rebuilt
+# Force Snowflake to be rebuilt (go get & go build)
 snowflake_force_build: false

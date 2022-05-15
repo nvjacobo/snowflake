@@ -1,8 +1,8 @@
 ---
-- name: Ensure /home/{{ snowflake_user }}/repo exists
+- name: Ensure {{ snowflake_git_dest }} exists
   ansible.builtin.file:
     state: directory
-    path: /home/{{ snowflake_user }}/repo
+    path: "{{ snowflake_git_dest }}"
     owner: "{{ snowflake_user }}"
     group: "{{ snowflake_group }}"
     mode: 0755
@@ -10,13 +10,14 @@
 - name: Clone snowflake repo
   ansible.builtin.git:
     repo: https://git.torproject.org/pluggable-transports/snowflake.git
-    dest: /home/{{ snowflake_user }}/snowflake
+    dest: "{{ snowflake_git_dest }}"
     update: "{{ snowflake_git_update }}"
   register: _snowflake_clone_git
   become_user: "{{ snowflake_user }}"
   become: true
+  register: _snowflake_git_clone
 
-- when: (_snowflake_clone_git is changed) or (snowflake_force_build | bool)
+- when: (_snowflake_git_clone.changed) or (snowflake_force_build | bool)
   block:
 
     - name: Download and build Go dependencies (get & build)
@@ -24,7 +25,7 @@
         cmd: go {{ item }}
       args:
         warn: false
-        chdir: /home/{{ snowflake_user }}/repo/proxy
+        chdir: "{{ snowflake_go_dest }}"
       loop:
         - get
         - build
@@ -35,7 +36,7 @@
 
     - name: Copy binary file to /usr/bin/
       ansible.builtin.copy:
-        src: /home/{{ snowflake_user }}/repo/proxy/proxy
+        src: "{{ snowflake_go_dest }}/"
         dest: /usr/bin/
         mode: a+x
         remote_src: true
