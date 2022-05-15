@@ -1,5 +1,5 @@
 #!/bin/sh
 
-cd /home/snowflake/logs/
+cd /home/{{ snowflake_user }}/logs/
 
 exec chpst -u snowflake svlogd -tt /home/snowflake/logs/
