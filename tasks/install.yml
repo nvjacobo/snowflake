@@ -1,0 +1,26 @@
+---
+- become_user: root
+  become: true
+  block:
+
+    - name: Add backports for Debian Buster repository
+      ansible.builtin.apt_repository:
+        repo: "deb http://deb.debian.org/debian buster-backports main"
+        state: present
+        update_cache: true
+      when:
+        - ansible_distribution == 'Debian'
+        - ansible_distribution_release == 'buster'
+        - __snowflake_apt_repository is defined
+        - __snowflake_apt_repository | length
+
+    - name: Install {{ __snowflake_packages }}
+      ansible.builtin.dnf:
+        name: "{{ __snowflake_packages }}"
+        state: present
+        default_release: "{{ __snowflake_default_release | default(omit) }}"
+
+    - name: Ensure Git is installed
+      ansible.builtin.package:
+        name: git
+        state: present

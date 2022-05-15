@@ -1,0 +1,21 @@
+---
+- become_user: root
+  become: true
+  block:
+
+    - name: Add Snowflake systemd unit
+      ansible.builtin.template:
+        src: snowflake-proxy.service.j2
+        dest: /etc/systemd/system/snowflake-proxy.service
+        mode: 0644
+      notify: snowflake restart systemd
+
+    - name: Run systemd daemon_reload
+      ansible.builtin.systemd:
+        daemon_reload: true
+
+    - name: Enable snowflake-proxy service
+      ansible.builtin.systemd:
+        name: snowflake-proxy
+        enabled: true
+        state: started

@@ -1,0 +1,8 @@
+---
+- name: Add {{ snowflake_user }} user
+  ansible.builtin.user:
+    name: "{{ snowflake_user }}"
+    create_home: true
+    state: present
+  become_user: root
+  become: true
