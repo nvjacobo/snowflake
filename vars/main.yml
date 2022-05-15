@@ -1,2 +1,3 @@
 ---
-# vars file for snowflake
+__snowflake_packages:
+  - golang

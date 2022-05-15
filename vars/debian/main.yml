@@ -1,0 +1,4 @@
+---
+__snowflake_packages:
+  - golang-src
+  - golang-go

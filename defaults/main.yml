@@ -1,25 +1,4 @@
 ---
-# defaults file for snowflake
-
-# golang in debian
-
-snowflake_packages_deb:
-- golang-src
-- golang-go
-
-snowflake_utils:
-- git
-
-
-snowflake_utils_arch:
-- git
-
-snowflake_utils_fedora:
-- git
-
-snowflake_packages_deb_ubuntu:
-- golang
-
 snowflake_user: snowflake
 
 # Update standalone version
