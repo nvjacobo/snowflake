@@ -24,6 +24,14 @@ Supported Operating Systems
 Role Variables (not for FreeBSD)
 ----------------
 
+    snowflake_user: snowflake
+
+    snowflake_group: "{{ snowflake_user }}"
+
+    snowflake_git_update: true
+
+    snowflake_force_build: false
+
     snowflake_max_clients: 0
 
 Maximum concurrent clients by default is 0 = non limit
