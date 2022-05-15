@@ -1,29 +1,43 @@
 ---
-# tasks file for snowflake
+- tags: snowflake
+  block:
 
-- include_tasks: debian.yml
-  when:
-   - ansible_distribution == 'Debian'
-   - ansible_distribution_release == 'buster'
+    - when:
+        - not ansible_distribution == 'FreeBSD'
+        - not ansible_distribution_release == '13.0-RELEASE'
+      block:
 
-- include_tasks: debian-bullseye.yml
-  when:
-    - ansible_distribution == 'Debian'
-    - ansible_distribution_release == 'bullseye'
+        - name: Include OS specific variables
+          ansible.builtin.include_vars: "{{ lookup('first_found', params) }}"
+          vars:
+            params:
+              files:
+                - "{{ ansible_distribution | lower }}/{{ ansible_distribution_release | lower }}.yml"
+                - "{{ ansible_distribution | lower }}/{{ ansible_distribution_release | lower }}/main.yml"
+                - "{{ ansible_distribution | lower }}.yml"
+                - main.yml
+              paths:
+                - vars
 
-- include_tasks: ubuntu.yml
-  when:
-   - ansible_distribution == 'Ubuntu'
-   - ansible_distribution_release == 'focal'
+        - name: Import Snowflake user tasks
+          ansible.builtin.import_tasks: user.yml
+          tags: snowflake_user
 
-- include_tasks: freebsd.yml
-  when:
-   - ansible_distribution == 'FreeBSD'
-   - ansible_distribution_release == '13.0-RELEASE'
+        - name: Import Snowflake install tasks
+          ansible.builtin.import_tasks: install.yml
+          tags: snowflake_install
 
-- include_tasks: arch.yml
-  when:
-   - ansible_distribution == 'Archlinux'
+        - name: Import Snowflake build tasks
+          ansible.builtin.import_tasks: build.yml
+          tags: snowflake_build
 
-- include_tasks: fedora.yml
-  when: ansible_os_family == 'RedHat'
+        - name: Import Snowflake service tasks
+          ansible.builtin.import_tasks: service.yml
+          tags: snowflake_service
+
+    - name: Import FreeBSD tasks
+      ansible.builtin.import_tasks: freebsd.yml
+      tags: snowflake_freebsd
+      when:
+        - ansible_distribution == 'FreeBSD'
+        - ansible_distribution_release == '13.0-RELEASE'
