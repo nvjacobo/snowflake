@@ -1,2 +1,7 @@
 ---
-# handlers file for snowflake
+- name: snowflake restart systemd
+  ansible.builtin.service:
+    name: snowflake-proxy
+    state: restarted
+  become_user: root
+  become: true
