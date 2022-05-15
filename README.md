@@ -1,7 +1,7 @@
 Ansible Role: Snowflake proxy
 =========
 
-An Ansible Role that Snowflake proxy on GNU/Linux and FreeBSD
+An Ansible Role that installs and configures Snowflake proxy on GNU/Linux and FreeBSD
 
 Background
 ------------
@@ -24,7 +24,7 @@ Supported Operating Systems
 Role Variables (not for FreeBSD)
 ----------------
 
-    clients: 0
+    snowflake_max_clients: 0
 
 Maximum concurrent clients by default is 0 = non limit
 
@@ -45,7 +45,7 @@ Example Playbook with Variable clients
 
     - hosts: snowflake
        vars:
-        clients: 300
+        snowflake_max_clients: 300
       roles:
          - nvjacobo.snowflake
 
