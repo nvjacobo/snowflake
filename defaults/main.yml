@@ -3,6 +3,8 @@ snowflake_user: snowflake
 
 # Update standalone version
 snowflake_update: yes
+# Update Git standalone version
+snowflake_git_update: true
 
 # Maximum concurrent clients
-clients: 0
+snowflake_max_clients: 0
