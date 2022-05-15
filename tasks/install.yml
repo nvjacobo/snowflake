@@ -15,7 +15,7 @@
         - __snowflake_apt_repository | length
 
     - name: Install {{ __snowflake_packages }}
-      ansible.builtin.dnf:
+      ansible.builtin.package:
         name: "{{ __snowflake_packages }}"
         state: present
         default_release: "{{ __snowflake_default_release | default(omit) }}"
