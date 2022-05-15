@@ -1,10 +1,13 @@
 ---
 snowflake_user: snowflake
 
-# Update standalone version
-snowflake_update: yes
+snowflake_group: "{{ snowflake_user }}"
+
 # Update Git standalone version
 snowflake_git_update: true
 
 # Maximum concurrent clients
 snowflake_max_clients: 0
+
+# Force Snowflake to be rebuilt
+snowflake_force_build: false
