@@ -12,7 +12,6 @@
     repo: https://git.torproject.org/pluggable-transports/snowflake.git
     dest: "{{ snowflake_git_dest }}"
     update: "{{ snowflake_git_update }}"
-  register: _snowflake_clone_git
   become_user: "{{ snowflake_user }}"
   become: true
   register: _snowflake_git_clone
