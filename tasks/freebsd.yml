@@ -10,7 +10,6 @@
 - name: Install package snowflake-tor
   community.general.pkgng:
     name: snowflake-tor
-    cached: true
     state: present
 
 - name: Enable snowflake on boot

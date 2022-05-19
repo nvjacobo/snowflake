@@ -2,9 +2,7 @@
 - tags: snowflake
   block:
 
-    - when:
-        - not ansible_distribution == 'FreeBSD'
-        - not ansible_distribution_release == '13.0-RELEASE'
+    - when: not ansible_distribution == 'FreeBSD'
       block:
 
         - name: Include OS specific variables
