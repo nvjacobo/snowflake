@@ -44,7 +44,7 @@ Example Playbook with Variable clients
 ----------------
 
     - hosts: snowflake
-       vars:
+      vars:
         clients: 300
       roles:
          - nvjacobo.snowflake
