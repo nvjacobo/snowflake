@@ -26,6 +26,8 @@ CapabilityBoundingSet=
 ProtectProc=invisible
 PrivateUsers=true
 ProtectHostname=true
+Restart=on-failure
+RestartSec=5s
 
 [Install]
 WantedBy=multi-user.target
