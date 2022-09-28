@@ -34,6 +34,7 @@
     dest: /usr/bin/
     mode: a+x
     remote_src: yes
+  notify: restart snowflake
 
 - name: Add unit systemd
   template:
@@ -42,17 +43,15 @@
     mode: 0644
   with_items:
     - snowflake-proxy.service
+  notify: restart snowflake
 
 - name: Enable service snowflake-proxy
   ansible.builtin.systemd:
     name: snowflake-proxy
     enabled: yes
+    state: started
 
 - name: Just force systemd to reread configs
   ansible.builtin.systemd:
     daemon_reload: yes
 
-- name: Start/restart service snowflake
-  ansible.builtin.service:
-    name: snowflake-proxy
-    state: restarted
