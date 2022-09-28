@@ -1,7 +1,6 @@
-- name: Upgrade all apt packages
+- name: Safe upgrade of all packages
   apt:
-    upgrade: dist
-    force_apt_get: yes
+    upgrade: safe
 
 - name: Install golang
   package:
