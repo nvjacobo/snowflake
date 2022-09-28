@@ -34,6 +34,7 @@ galaxy_info:
    - name: Ubuntu
      versions:
      - focal
+     - jammy
    - name: FreeBSD
      versions:
      - 13.0
