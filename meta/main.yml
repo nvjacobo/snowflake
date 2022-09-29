@@ -13,7 +13,7 @@ galaxy_info:
   # - GPL-3.0-only
   # - Apache-2.0
   # - CC-BY-4.0
-  license: license (BSD, MIT)
+  license: BSD-3-Clause OR MIT
 
   min_ansible_version: 2.1
 
@@ -49,7 +49,7 @@ galaxy_info:
   galaxy_tags:
     - networking
     - tor
-    - anonymity  
+    - anonymity
 
 dependencies: []
   # List your role dependencies here, one per line. Be sure to remove the '[]' above,
