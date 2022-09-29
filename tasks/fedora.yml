@@ -47,7 +47,7 @@
 
 - name: Add unit systemd
   template:
-    src: "../templates/{{ item }}.j2"
+    src: "{{ item }}.j2"
     dest: "/etc/systemd/system/{{ item }}"
     mode: 0644
   with_items:
