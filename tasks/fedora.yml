@@ -1,11 +1,11 @@
 # arch.yml
 - name: Install golang
-  package:
+  ansible.builtin.package:
     name: golang
     state: present
 
 - name: Install required software
-  package:
+  ansible.builtin.package:
     name: "{{ snowflake_utils_fedora }}"
     state: present
 
@@ -23,7 +23,7 @@
   register: clone_git
 
 - name: go get
-  command: go get
+  ansible.builtin.command: go get
   args:
     warn: no
     chdir: /home/{{ snowflake_user }}/repo/proxy
@@ -31,7 +31,7 @@
   when: clone_git is changed
 
 - name: go build
-  command: go build
+  ansible.builtin.command: go build
   args:
     warn: no
     chdir: /home/{{ snowflake_user }}/repo/proxy
@@ -46,7 +46,7 @@
     remote_src: yes
 
 - name: Add unit systemd
-  template:
+  ansible.builtin.template:
     src: "{{ item }}.j2"
     dest: "/etc/systemd/system/{{ item }}"
     mode: 0644
