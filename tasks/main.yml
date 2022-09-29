@@ -16,14 +16,18 @@
    - ansible_distribution == 'Ubuntu'
    - ansible_distribution_release == 'focal' or ansible_distribution_release == 'jammy'
 
-- include_tasks: freebsd.yml
-  when:
-   - ansible_distribution == 'FreeBSD'
-   - ansible_distribution_release == '13.0-RELEASE'
-
 - include_tasks: arch.yml
   when:
    - ansible_distribution == 'Archlinux'
 
 - include_tasks: fedora.yml
   when: ansible_os_family == 'RedHat'
+
+- include_tasks: linux-common.yml
+  when: ansible_distribution != 'FreeBSD'
+
+
+- include_tasks: freebsd.yml
+  when:
+   - ansible_distribution == 'FreeBSD'
+   - ansible_distribution_release == '13.0-RELEASE'

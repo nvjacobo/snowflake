@@ -1,2 +1,6 @@
 ---
 # handlers file for snowflake
+- name: restart snowflake
+  ansible.builtin.service:
+    name: snowflake-proxy
+    state: restarted
