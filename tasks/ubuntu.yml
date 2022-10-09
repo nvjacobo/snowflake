@@ -1,14 +1,14 @@
 - name: Safe upgrade of all packages
-  apt:
+  ansible.builtin.apt:
     upgrade: safe
 
 - name: Install golang
-  package:
+  ansible.builtin.package:
     name: "{{ snowflake_packages_deb_ubuntu }}"
     state: present
 
 - name: Install required software
-  package:
+  ansible.builtin.package:
     name: "{{ snowflake_utils }}"
     state: present
 
@@ -26,7 +26,7 @@
   register: clone_git
 
 - name: go get
-  command: go get
+  ansible.builtin.command: go get
   args:
     warn: no
     chdir: /home/{{ snowflake_user }}/repo/proxy
@@ -34,7 +34,7 @@
   when: clone_git is changed
 
 - name: go build
-  command: go build
+  ansible.builtin.command: go build
   args:
     warn: no
     chdir: /home/{{ snowflake_user }}/repo/proxy
@@ -49,8 +49,8 @@
     remote_src: yes
 
 - name: Add unit systemd
-  template:
-    src: "../templates/{{ item }}.j2"
+  ansible.builtin.template:
+    src: "{{ item }}.j2"
     dest: "/etc/systemd/system/{{ item }}"
     mode: 0644
   with_items:
