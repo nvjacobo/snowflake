@@ -1,7 +1,7 @@
 # freebsd.yml
 
 - name: Config pkg repo
-  tansible.builtin.emplate:
+  ansible.builtin.template:
     src: "{{ item }}.j2"
     dest: "/etc/pkg/{{ item }}"
     mode: 0644
