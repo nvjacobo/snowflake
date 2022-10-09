@@ -37,8 +37,8 @@ galaxy_info:
      - jammy
    - name: FreeBSD
      versions:
-     - 13.0
-     - 12.2
+     - 13.1
+     - 12.3
    - name: ArchLinux
      versions:
      - all
