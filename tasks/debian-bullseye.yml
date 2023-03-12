@@ -30,7 +30,6 @@
 - name: go get
   ansible.builtin.command: go get
   args:
-    warn: no
     chdir: /home/{{ snowflake_user }}/repo/proxy
   register: go_get
   when: clone_git is changed
@@ -38,7 +37,6 @@
 - name: go build
   ansible.builtin.command: go build
   args:
-    warn: no
     chdir: /home/{{ snowflake_user }}/repo/proxy
   register: go_build
   when: clone_git is changed
