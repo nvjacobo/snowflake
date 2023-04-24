@@ -1,11 +1,11 @@
 # arch.yml
 - name: Install golang
-  package:
+  ansible.builtin.package:
     name: go
     state: present
 
 - name: Install required software
-  package:
+  ansible.builtin.package:
     name: "{{ snowflake_utils_arch }}"
     state: present
 
