@@ -25,5 +25,8 @@ snowflake_user: snowflake
 # Update standalone version
 snowflake_update: yes
 
+# Use tags from https://gitlab.torproject.org/tpo/anti-censorship/pluggable-transports/snowflake/-/tags
+snowflake_version: v2.5.1 
+
 # Maximum concurrent clients
 clients: 0

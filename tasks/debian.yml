@@ -29,6 +29,7 @@
 - name: Clone snowflake repo
   ansible.builtin.git:
     repo: 'https://git.torproject.org/pluggable-transports/snowflake.git'
+    version: "{{ snowflake_version }}"
     dest: /home/{{ snowflake_user }}/repo
     update: "{{ snowflake_update }}"
   register: clone_git
