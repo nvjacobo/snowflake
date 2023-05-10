@@ -23,14 +23,14 @@
     update: "{{ snowflake_update }}"
   register: clone_git
 
-- name: go get
+- name: Go get
   ansible.builtin.command: go get
   args:
     chdir: /home/{{ snowflake_user }}/repo/proxy
   register: go_get
   when: clone_git is changed
 
-- name: go build
+- name: Go build
   ansible.builtin.command: go build
   args:
     chdir: /home/{{ snowflake_user }}/repo/proxy

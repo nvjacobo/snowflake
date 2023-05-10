@@ -4,19 +4,19 @@
     cache_valid_time: 3600
 
 - name: Add backports repository
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "deb http://deb.debian.org/debian buster-backports main"
     state: present
     update_cache: true
 
 - name: Install golang
-  package:
+  ansible.builtin.package:
     name: "{{ snowflake_packages_deb }}"
     default_release: buster-backports
     state: present
 
 - name: Install required software
-  package:
+  ansible.builtin.package:
     name: "{{ snowflake_utils }}"
     state: present
 
@@ -34,14 +34,14 @@
     update: "{{ snowflake_update }}"
   register: clone_git
 
-- name: go get
+- name: Go get
   ansible.builtin.command: go get
   args:
     chdir: /home/{{ snowflake_user }}/repo/proxy
   register: go_get
   when: clone_git is changed
 
-- name: go build
+- name: Go build
   ansible.builtin.command: go build
   args:
     chdir: /home/{{ snowflake_user }}/repo/proxy

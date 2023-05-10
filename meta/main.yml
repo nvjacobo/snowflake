@@ -45,7 +45,7 @@ galaxy_info:
    - name: Fedora
      versions:
       - 35
-
+      - 36
   galaxy_tags:
     - networking
     - tor
