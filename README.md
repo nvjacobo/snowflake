@@ -1,7 +1,7 @@
 Ansible Role: Snowflake proxy
 =========
 
-An Ansible Role that Snowflake proxy on GNU/Linux and FreeBSD
+An Ansible Role that installs and configures Snowflake proxy on GNU/Linux and FreeBSD
 
 Background
 ------------
