@@ -11,6 +11,11 @@
     - ansible_distribution == 'Debian'
     - ansible_distribution_release == 'bullseye'
 
+- include_tasks: debian-bullseye.yml
+  when:
+    - ansible_distribution == 'Debian'
+    - ansible_distribution_release == 'bookworm'
+
 - include_tasks: ubuntu.yml
   when:
    - ansible_distribution == 'Ubuntu'
