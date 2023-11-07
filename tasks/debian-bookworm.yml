@@ -3,6 +3,19 @@
     update_cache: yes
     cache_valid_time: 3600
 
+- name: Add backports repository
+  ansible.builtin.apt_repository:
+    repo: "deb http://deb.debian.org/debian bookworm-backports main"
+    state: present
+    update_cache: true
+
+- name: Install golang
+  ansible.builtin.package:
+    name: "{{ snowflake_packages_deb }}"
+    default_release: bookworm-backports
+    state: present
+    
+
 - name: Install required software
   ansible.builtin.package:
     name: "{{ snowflake_utils }}"
