@@ -15,7 +15,7 @@ You need root privileges or sudo user to run this role.
 Supported Operating Systems
 ------------
 - Debian Bullseye
-- Debian Buster
+- Debian Bookworm
 - Ubuntu
 - ArchLinux
 - Fedora  
