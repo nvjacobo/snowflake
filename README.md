@@ -16,6 +16,7 @@ Supported Operating Systems
 ------------
 - Debian Bullseye
 - Debian Bookworm
+- Debian Trixie
 - Ubuntu
 - ArchLinux
 - Fedora  
