@@ -8,6 +8,11 @@
     name: "{{ snowflake_utils }}"
     state: present
 
+- name: Install golang
+  ansible.builtin.package:
+    name: "{{ snowflake_packages_deb }}"
+    state: present
+
 - name: Add the user
   ansible.builtin.user:
     name: "{{ snowflake_user }}"
