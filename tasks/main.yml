@@ -1,5 +1,9 @@
 ---
 # tasks file for snowflake
+- include_tasks: debian-trixie.yml
+  when:
+    - ansible_distribution == 'Debian'
+    - ansible_distribution_release == 'trixie'
 
 - include_tasks: debian-bullseye.yml
   when:

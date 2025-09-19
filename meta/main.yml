@@ -30,7 +30,8 @@ galaxy_info:
    - name: Debian
      versions:
      - bullseye
-     - bookworm  
+     - bookworm
+     - trixie  
    - name: Ubuntu
      versions:
      - focal
