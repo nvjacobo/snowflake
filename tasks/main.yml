@@ -18,7 +18,7 @@
 - include_tasks: ubuntu.yml
   when:
    - ansible_distribution == 'Ubuntu'
-   - ansible_distribution_release == 'focal' or ansible_distribution_release == 'jammy'
+   - ansible_distribution_release == 'focal' or ansible_distribution_release == 'jammy' or ansible_distribution_release == 'noble'
 
 - include_tasks: freebsd.yml
   when:
